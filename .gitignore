@@ -1,4 +1,26 @@
-venv/
-.env
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 *.pyc
+
+# Virtual environments (adjust names if you use different ones)
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs and OS specific (Optional but highly recommended)
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

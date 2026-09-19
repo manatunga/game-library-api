@@ -16,7 +16,7 @@ def get_games():
 def get_game(id: str):
     game = games_collection.find_one({"_id": ObjectId(id)})
     if not game:
-        raise HTTPException(status=404, descriptionn="Game not found")
+        raise HTTPException(status_code=404, detail="Game not found")
     game["_id"] = str(game["_id"])
     return game
 
@@ -31,8 +31,8 @@ def add_game(game: Game):
 def delete_game(id: str):
     result = games_collection.delete_one({"_id": ObjectId(id)})
     if result.deleted_count == 0:
-        raise HTTPException(status=404, descriptionn="Game not found")
-    return {"message": "game deleted"}
+        raise HTTPException(status_code=404, detail="Game not found")
+    return {"message": "Game deleted"}
 
 @router.put("/games/{id}")
 def update_game(id: str, game: Game):
@@ -41,5 +41,5 @@ def update_game(id: str, game: Game):
         {"$set": dict(game)}
     )
     if result.matched_count == 0:
-        raise HTTPException(status=404, descriptionn="Game not found")
+        raise HTTPException(status_code=404, detail="Game not found")
     return {"message":"Game updated"}
